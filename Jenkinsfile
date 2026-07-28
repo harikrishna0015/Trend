@@ -13,7 +13,7 @@ pipeline {
             steps {
                 git branch: 'main',
                 credentialsId: 'github-creds',
-                url: 'https://github.com/Vennilavanguvi/Trend.git'
+                url: 'https://github.com/harikrishna0015/Trend.git'
             }
         }
 

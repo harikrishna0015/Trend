@@ -1,91 +1,242 @@
-DevOps Practice Project – Dist Directory
+# Trend Application Deployment using Terraform, Docker, Jenkins and Amazon EKS
 
-This repository contains the production-ready build files (dist folder) for DevOps practice and deployment exercises.
+## Project Overview
 
-It is intentionally structured to help learners focus on CI/CD pipelines, hosting, containerization, and infrastructure setup rather than application development.
+This project demonstrates the deployment of the Trend React application using a complete CI/CD pipeline. The infrastructure was provisioned using Terraform, the application was containerized using Docker, the Docker image was pushed to Docker Hub, and Jenkins was used to automate the deployment to an Amazon EKS cluster.
 
-📁 What This Repository Contains
+## Technologies Used
 
-dist/ – Compiled and production-ready static files
+- React
+- Docker
+- Docker Hub
+- Jenkins
+- Terraform
+- AWS EC2
+- AWS IAM
+- AWS VPC
+- Amazon EKS
+- Kubernetes
+- kubectl
+- Git
+- GitHub
 
-HTML
+## Repository
 
-CSS
+Original Repository
 
-JavaScript
+https://github.com/Vennilavanguvi/Trend.git
 
-Assets (images, fonts, etc.)
+GitHub Repository
 
-These files are ready to deploy to:
+https://github.com/harikrishna0015/<YOUR_REPOSITORY_NAME>
 
-Web servers (Nginx / Apache)
+## Project Structure
 
-Cloud platforms (AWS S3, Azure Blob, GCP Storage)
+```
+Trend/
+├── Dockerfile
+├── Jenkinsfile
+├── deployment.yaml
+├── service.yaml
+├── main.tf
+├── variables.tf
+├── outputs.tf
+├── .gitignore
+├── .dockerignore
+└── README.md
+```
 
-Containerized environments (Docker + Nginx)
+## Prerequisites
 
-Kubernetes clusters
+- AWS Account
+- Terraform
+- Docker
+- AWS CLI
+- kubectl
+- Jenkins
+- Git
 
-CI/CD pipeline demonstrations
+## Infrastructure Provisioning
 
-🎯 Purpose of This Repository
+Terraform was used to provision the AWS infrastructure including:
 
-This repository is designed for:
+- VPC
+- Public Subnet
+- Internet Gateway
+- Route Table
+- Security Group
+- IAM Role
+- IAM Instance Profile
+- EC2 Instance for Jenkins
 
-DevOps beginners
+### Initialize Terraform
 
-CI/CD practice
+```bash
+terraform init
+```
 
-Deployment pipeline testing
+### Review Execution Plan
 
-Docker & Kubernetes deployment exercises
+```bash
+terraform plan
+```
 
-Web server configuration practice
+### Provision Infrastructure
 
-Reverse proxy and load balancer setup
+```bash
+terraform apply
+```
 
-The goal is to simulate real-world deployment scenarios using already built application files.
+## Docker
 
-❓ Why is there NO package.json?
+### Build Docker Image
 
-You may notice that this repository does not include:
+```bash
+docker build -t trend-app .
+```
 
-package.json
+### Run Docker Container
 
-node_modules
+```bash
+docker run -d -p 3000:80 trend-app
+```
 
-Source code (src/)
+## Docker Hub
 
-Build tools configuration
+Docker image was pushed to Docker Hub.
 
-✅ Reason:
+Repository
 
-This repository only contains the final production build output (dist), not the development source code.
+```
+harikrishna2125/trend-app
+```
 
-In a typical project:
+### Login
 
-Developers write source code.
+```bash
+docker login
+```
 
-The project is built using tools like:
+### Tag Image
 
-Node.js
+```bash
+docker tag trend-app harikrishna2125/trend-app:latest
+```
 
-Webpack
+### Push Image
 
-Vite
+```bash
+docker push harikrishna2125/trend-app:latest
+```
 
-React (or other frameworks)
+## Amazon EKS
 
-A dist/ folder is generated.
+Amazon EKS was used to host the Kubernetes cluster.
 
-Only the production build is deployed to servers.
+### Verify Cluster
 
-This repository represents step 4 only.
+```bash
+kubectl get nodes
+```
 
-Since this is already the compiled output:
+## Kubernetes Deployment
 
-No dependencies are required
+Deploy the application.
 
-No build process is required
+```bash
+kubectl apply -f deployment.yaml
+```
 
-No package.json is needed
+Deploy the service.
+
+```bash
+kubectl apply -f service.yaml
+```
+
+Verify deployment.
+
+```bash
+kubectl get deployments
+```
+
+Verify pods.
+
+```bash
+kubectl get pods
+```
+
+Verify services.
+
+```bash
+kubectl get svc
+```
+
+The application is exposed using a Kubernetes LoadBalancer service.
+
+## Jenkins CI/CD Pipeline
+
+A Declarative Jenkins Pipeline was created to automate the deployment process.
+
+Pipeline stages include:
+
+1. Source Code Checkout
+2. Docker Image Build
+3. Docker Image Push to Docker Hub
+4. Kubernetes Deployment to Amazon EKS
+5. Deployment Verification
+
+## GitHub Integration
+
+The project source code is maintained in GitHub.
+
+GitHub webhook integration can be configured to automatically trigger the Jenkins pipeline whenever code is pushed to the repository.
+
+## Verification
+
+Verify the cluster.
+
+```bash
+kubectl get nodes
+```
+
+Verify deployments.
+
+```bash
+kubectl get deployments
+```
+
+Verify pods.
+
+```bash
+kubectl get pods
+```
+
+Verify services.
+
+```bash
+kubectl get svc
+```
+
+## Application Access
+
+The application is accessible through the Kubernetes LoadBalancer.
+
+```
+http://<APPLICATION_LOADBALANCER_DNS>
+```
+
+## Screenshots Included
+
+-Please see in the screenshots folder
+
+## Outcome
+
+Successfully provisioned AWS infrastructure using Terraform.
+
+Successfully containerized the React application using Docker.
+
+Successfully pushed the Docker image to Docker Hub.
+
+Successfully deployed the application to Amazon EKS using Jenkins CI/CD.
+
+Successfully exposed the application using a Kubernetes LoadBalancer service.

@@ -28,8 +28,7 @@ https://github.com/Vennilavanguvi/Trend.git
 
 GitHub Repository
 
-https://github.com/harikrishna0015/<YOUR_REPOSITORY_NAME>
-
+https://github.com/harikrishna0015/Trend
 ## Project Structure
 
 ```
@@ -221,9 +220,7 @@ kubectl get svc
 
 The application is accessible through the Kubernetes LoadBalancer.
 
-```
-http://<APPLICATION_LOADBALANCER_DNS>
-```
+Please see the screenshot inscreenshots folder (Screenshot 2026-07-29 133955)
 
 ## Screenshots Included
 

@@ -33,15 +33,11 @@ https://github.com/harikrishna0015/Trend
 
 ```
 Trend/
+├── dist/
 ├── Dockerfile
 ├── Jenkinsfile
 ├── deployment.yaml
 ├── service.yaml
-├── main.tf
-├── variables.tf
-├── outputs.tf
-├── .gitignore
-├── .dockerignore
 └── README.md
 ```
 

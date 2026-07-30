@@ -1,5 +1,7 @@
 # Trend Application Deployment using Terraform, Docker, Jenkins and Amazon EKS
 
+Terrafom files has been added here, and Grafanna monitoring installation screenshots are added and metrics screenshots has been added
+
 ## Project Overview
 
 This project demonstrates the deployment of the Trend React application using a complete CI/CD pipeline. The infrastructure was provisioned using Terraform, the application was containerized using Docker, the Docker image was pushed to Docker Hub, and Jenkins was used to automate the deployment to an Amazon EKS cluster.

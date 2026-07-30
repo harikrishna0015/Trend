@@ -38,7 +38,13 @@ Trend/
 ├── Jenkinsfile
 ├── deployment.yaml
 ├── service.yaml
-└── README.md
+├── README.md
+├── variables.tf
+├── provider.tf
+├── variable.tf
+├── terraform.tfvars
+├── main.tf
+└── output.tf
 ```
 
 ## Prerequisites
@@ -167,6 +173,39 @@ kubectl get svc
 ```
 
 The application is exposed using a Kubernetes LoadBalancer service.
+
+# Monitoring
+
+Monitoring was implemented using:
+
+- Helm
+- Prometheus Stack
+- Grafana
+
+Installation
+
+```bash
+helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
+
+helm repo update
+
+kubectl create namespace monitoring
+
+helm install monitoring prometheus-community/kube-prometheus-stack \
+--namespace monitoring
+```
+
+Grafana was exposed using a Kubernetes LoadBalancer Service.
+
+Monitoring dashboards provide:
+
+- Cluster Health
+- Node Metrics
+- Pod Metrics
+- CPU Utilization
+- Memory Utilization
+
+---
 
 ## Jenkins CI/CD Pipeline
 
